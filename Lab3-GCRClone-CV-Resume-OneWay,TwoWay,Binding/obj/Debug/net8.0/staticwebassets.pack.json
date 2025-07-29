@@ -1,0 +1,89 @@
+{
+  "Files": [
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Lab3.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Lab3.bmcu72uul9.bundle.scp.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\bootstrap\\form.css",
+      "PackagePath": "staticwebassets\\bootstrap\\form.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\images\\chevron.png",
+      "PackagePath": "staticwebassets\\images\\chevron.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\images\\dots-menu.png",
+      "PackagePath": "staticwebassets\\images\\dots-menu.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\images\\folder.png",
+      "PackagePath": "staticwebassets\\images\\folder.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\images\\gcr.png",
+      "PackagePath": "staticwebassets\\images\\gcr.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\images\\id.png",
+      "PackagePath": "staticwebassets\\images\\id.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\images\\man.jpg",
+      "PackagePath": "staticwebassets\\images\\man.jpg"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\images\\menu.png",
+      "PackagePath": "staticwebassets\\images\\menu.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\images\\more.png",
+      "PackagePath": "staticwebassets\\images\\more.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\images\\plus.png",
+      "PackagePath": "staticwebassets\\images\\plus.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab3\\wwwroot\\images\\user.png",
+      "PackagePath": "staticwebassets\\images\\user.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Lab3.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Lab3.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Lab3.props",
+      "PackagePath": "build\\Lab3.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Lab3.props",
+      "PackagePath": "buildMultiTargeting\\Lab3.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Lab3.props",
+      "PackagePath": "buildTransitive\\Lab3.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

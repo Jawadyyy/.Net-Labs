@@ -1,0 +1,79 @@
+﻿@page "/resume"
+@rendermode RenderMode.InteractiveServer
+@inject FormDataService FormDataService
+
+<style>
+    .resume-container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 30px;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .resume-container h3 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 25px;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .resume-section {
+        margin-bottom: 20px;
+    }
+
+    .resume-section h4 {
+        color: #333;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+    }
+
+    .resume-section p {
+        margin: 8px 0;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .resume-section p strong {
+        color: #333;
+        font-weight: 600;
+    }
+
+    .resume-container {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="resume-container">
+    <h3>Resume</h3>
+
+    <div class="resume-section">
+        <h4>Personal Information</h4>
+        <p><strong>First Name:</strong> @FormDataService.FirstName</p>
+        <p><strong>Last Name:</strong> @FormDataService.LastName</p>
+        <p><strong>Email:</strong> @FormDataService.Email</p>
+        <p><strong>Phone Number:</strong> @FormDataService.PhoneNumber</p>
+    </div>
+
+    <div class="resume-section">
+        <h4>Introduction</h4>
+        <p>@FormDataService.Introduction</p>
+    </div>
+</div>

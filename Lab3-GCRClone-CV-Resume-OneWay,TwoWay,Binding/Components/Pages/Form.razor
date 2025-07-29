@@ -1,0 +1,141 @@
+﻿@page "/form"
+@rendermode RenderMode.InteractiveServer
+@inject FormDataService FormDataService
+@inject NavigationManager NavigationManager
+
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .form-group input, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #333;
+        background-color: #f9f9f9;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        height: 120px;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+
+    .submit-button:active {
+        background-color: #004080;
+    }
+
+    h3 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 25px;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .form-container {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="form-container">
+    <h3>Form</h3>
+    <form @onsubmit="HandleSubmit">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input id="firstName" @bind="FirstName" placeholder="Enter your first name" required />
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" @bind="LastName" placeholder="Enter your last name" required />
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input id="email" type="email" @bind="Email" placeholder="Enter your email" required />
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input id="phone" @bind="PhoneNumber" placeholder="Enter your phone number" required />
+        </div>
+        <div class="form-group">
+            <label for="introduction">Introduction:</label>
+            <textarea id="introduction" @bind="Introduction" placeholder="Tell us about yourself" required></textarea>
+        </div>
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+</div>
+
+@code {
+    private string FirstName { get; set; }
+    private string LastName { get; set; }
+    private string Email { get; set; }
+    private string PhoneNumber { get; set; }
+    private string Introduction { get; set; }
+
+    private void HandleSubmit()
+    {
+        FormDataService.FirstName = FirstName;
+        FormDataService.LastName = LastName;
+        FormDataService.Email = Email;
+        FormDataService.PhoneNumber = PhoneNumber;
+        FormDataService.Introduction = Introduction;
+
+        NavigationManager.NavigateTo("/resume");
+    }
+}
