@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <style>
+        body {
+            background-color: #fffcf2;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .logbox {
+            display: flex;
+            width: 80%;
+            max-width: 900px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .left,
+        .right {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .left {
+            background-color: #005ec3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .right {
+            background-color: white;
+            color: black;
+        }
+
+        .content,
+        .signup {
+            width: 100%;
+        }
+
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        #sbtn,
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #005ec3;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        #sbtn:hover,
+        .btn:hover {
+            background-color: #004494;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            width: 32%;
+        }
+    </style>
+</head>
+
+<body>
+  <div class="logbox">
+    <div class="left">
+      <div class="content">
+        <h1>Come Join Us!</h1>
+        <h3>
+          We are so excited to have you here. If you haven't already, create an account to get access to exclusive offers, rewards, and discounts.
+        </h3>
+        <h3>Already have an Account? <u><b>Log In</b></u></h3>
+      </div>
+    </div>
+
+    <div class="right">
+      <form class="signup">
+        <center>
+          <h1>Sign Up</h1>
+        </center>
+        <input type="text" id="fullname" placeholder="Full Name" required />
+        <input type="text" id="lastname" placeholder="Last Name" required />
+        <input type="password" id="pass" placeholder="Enter Password" required />
+        <input type="password" id="cpass" placeholder="Confirm Password" required />
+        <button id="sbtn" type="submit">Sign Up</button>
+        <label for="confirm">
+          <input type="checkbox" id="confirm" /> Remember Me
+        </label>
+        <center>
+          <h4>_______________ Or Sign Up with _______________</h4>
+        </center>
+        <div class="social-buttons">
+          <button type="button" class="btn">Facebook</button>
+          <button type="button" class="btn">Google</button>
+          <button type="button" class="btn">LinkedIn</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
