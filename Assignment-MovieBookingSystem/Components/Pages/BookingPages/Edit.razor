@@ -1,0 +1,117 @@
+﻿@page "/bookings/edit"
+@using MovieBookingSystem.Models
+@using MovieBookingSystem.Services
+@inject BookingService BookingService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit Booking</PageTitle>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            @if (Booking == null)
+            {
+                <div class="alert alert-info text-center" role="alert">
+                    <em>Loading...</em>
+                </div>
+            }
+            else
+            {
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="mb-0">Edit Booking</h2>
+                    </div>
+                    <div class="card-body">
+                        <EditForm Model="@Booking" OnValidSubmit="@HandleValidSubmit" FormName="editBooking">
+                            <DataAnnotationsValidator />
+                            <ValidationSummary class="text-danger mb-4" />
+
+                            <div class="mb-4">
+                                <label for="movieTitle" class="form-label fw-bold">Movie Title</label>
+                                <InputText id="movieTitle" @bind-Value="Booking.MovieTitle" class="form-control form-control-lg" placeholder="Enter movie title" />
+                                <ValidationMessage For="@(() => Booking.MovieTitle)" class="text-danger mt-1" />
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="customerName" class="form-label fw-bold">Customer Name</label>
+                                <InputText id="customerName" @bind-Value="Booking.CustomerName" class="form-control form-control-lg" placeholder="Enter customer name" />
+                                <ValidationMessage For="@(() => Booking.CustomerName)" class="text-danger mt-1" />
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="showtime" class="form-label fw-bold">Showtime</label>
+                                <InputDate id="showtime" @bind-Value="Booking.Showtime" class="form-control form-control-lg" />
+                                <ValidationMessage For="@(() => Booking.Showtime)" class="text-danger mt-1" />
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="seatNumber" class="form-label fw-bold">Seat Number</label>
+                                <InputText id="seatNumber" @bind-Value="Booking.SeatNumber" class="form-control form-control-lg" placeholder="e.g., A12" />
+                                <ValidationMessage For="@(() => Booking.SeatNumber)" class="text-danger mt-1" />
+                            </div>
+
+                            <div class="d-flex justify-content-end gap-2">
+                                <a href="/bookings" class="btn btn-outline-secondary btn-lg">Cancel</a>
+                                <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+                            </div>
+                        </EditForm>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: background-color 0.2s ease-in-out;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+    .btn-outline-secondary {
+        transition: background-color 0.2s ease-in-out;
+    }
+    .btn-outline-secondary:hover {
+        background-color: #f8f9fa;
+    }
+</style>
+
+@code {
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public int Id { get; set; }
+
+    private Booking? Booking { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Booking = BookingService.GetBookingById(Id);
+
+        if (Booking == null)
+        {
+            NavigationManager.NavigateTo("/notfound");
+        }
+    }
+
+    private void HandleValidSubmit()
+    {
+        if (BookingService.UpdateBooking(Booking!))
+        {
+            NavigationManager.NavigateTo("/bookings");
+        }
+    }
+}

@@ -1,0 +1,53 @@
+﻿@page "/bookings/details"
+@using Microsoft.EntityFrameworkCore
+@using EMS.Models
+@inject IDbContextFactory<EMS.Data.EMSContext> DbFactory
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>Bookings</h2>
+    <hr />
+    @if (bookings is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">Name</dt>
+            <dd class="col-sm-10">@bookings.Name</dd>
+            <dt class="col-sm-2">Email</dt>
+            <dd class="col-sm-10">@bookings.Email</dd>
+            <dt class="col-sm-2">NumberOfSeats</dt>
+            <dd class="col-sm-10">@bookings.NumberOfSeats</dd>
+            <dt class="col-sm-2">EventId</dt>
+            <dd class="col-sm-10">@bookings.EventId</dd>
+        </dl>
+        <div>
+            <a href="@($"/bookings/edit?bookingid={bookings.BookingId}")">Edit</a> |
+            <a href="@($"/bookings")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private Bookings? bookings;
+
+    [SupplyParameterFromQuery]
+    private int BookingId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        bookings = await context.Bookings.FirstOrDefaultAsync(m => m.BookingId == BookingId);
+
+        if (bookings is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

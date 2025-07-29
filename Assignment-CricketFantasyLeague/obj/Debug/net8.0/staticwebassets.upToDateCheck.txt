@@ -1,0 +1,12 @@
+wwwroot\app.css
+wwwroot\bootstrap\bootstrap.min.css
+wwwroot\bootstrap\bootstrap.min.css.map
+wwwroot\favicon.png
+wwwroot\gallery.css
+wwwroot\images\abd.jpg
+wwwroot\images\boult.png
+wwwroot\images\bumrah.jpg
+wwwroot\images\fantasy.jpg
+wwwroot\images\max.png
+wwwroot\images\raza.png
+wwwroot\images\umar.jpg

@@ -1,0 +1,102 @@
+﻿@page "/bookings/delete"
+@using MovieBookingSystem.Models
+@using MovieBookingSystem.Services
+@inject BookingService BookingService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Delete Booking</PageTitle>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            @if (Booking == null)
+            {
+                <div class="alert alert-info text-center" role="alert">
+                    <em>Loading...</em>
+                </div>
+            }
+            else
+            {
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-danger text-white">
+                        <h2 class="mb-0">Delete Booking</h2>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">@Booking.MovieTitle</h4>
+                        <div class="alert alert-warning" role="alert">
+                            <strong>Warning:</strong> Are you sure you want to delete this booking? This action cannot be undone.
+                        </div>
+                        <dl class="row mb-4">
+                            <dt class="col-sm-4 fw-bold">Customer Name</dt>
+                            <dd class="col-sm-8">@Booking.CustomerName</dd>
+
+                            <dt class="col-sm-4 fw-bold">Showtime</dt>
+                            <dd class="col-sm-8">@Booking.Showtime.ToString("f")</dd>
+
+                            <dt class="col-sm-4 fw-bold">Seat Number</dt>
+                            <dd class="col-sm-8">@Booking.SeatNumber</dd>
+                        </dl>
+
+                        <EditForm Model="@Booking" OnValidSubmit="@DeleteBooking" FormName="deleteBooking">
+                            <div class="d-flex justify-content-end gap-2">
+                                <a href="/bookings" class="btn btn-outline-secondary btn-lg">Cancel</a>
+                                <button type="submit" class="btn btn-danger btn-lg">Delete</button>
+                            </div>
+                        </EditForm>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        transition: background-color 0.2s ease-in-out;
+    }
+    .btn-danger:hover {
+        background-color: #b02a37;
+        border-color: #b02a37;
+    }
+    .btn-outline-secondary {
+        transition: background-color 0.2s ease-in-out;
+    }
+    .btn-outline-secondary:hover {
+        background-color: #f8f9fa;
+    }
+    .dl-horizontal dt {
+        font-weight: bold;
+    }
+</style>
+
+@code {
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public int Id { get; set; }
+
+    private Booking? Booking { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Booking = BookingService.GetBookingById(Id);
+
+        if (Booking == null)
+        {
+            NavigationManager.NavigateTo("/notfound");
+        }
+    }
+
+    private void DeleteBooking()
+    {
+        BookingService.DeleteBooking(Id);
+        NavigationManager.NavigateTo("/bookings");
+    }
+}

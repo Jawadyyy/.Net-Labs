@@ -1,0 +1,209 @@
+﻿@page "/evnts/delete"
+@using Microsoft.EntityFrameworkCore
+@using EMS.Models
+@inject IDbContextFactory<EMS.Data.EMSContext> DbFactory
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<PageTitle>Delete Event</PageTitle>
+
+<div class="container py-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-dark-blue-gradient text-white py-3">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-trash-alt fa-lg me-3"></i>
+                <h3 class="mb-0">Delete Event Confirmation</h3>
+            </div>
+        </div>
+
+        <div class="card-body p-4">
+            @if (evnts is null)
+            {
+                <div class="d-flex justify-content-center my-5 py-4">
+                    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning border-warning">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-exclamation-circle fa-2x me-3"></i>
+                        <div>
+                            <h4 class="alert-heading mb-2">Warning: This action is permanent!</h4>
+                            <p class="mb-0">Deleting this event will also remove all associated bookings. This cannot be undone.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-details bg-light-blue p-4 rounded-3 mb-4">
+                    <h4 class="text-dark-blue mb-4 border-bottom pb-2">
+                        <i class="fas fa-calendar-alt me-2"></i>Event Details
+                    </h4>
+
+                    <div class="row g-3">
+                        <!-- Basic Info -->
+                        <div class="col-md-6">
+                            <div class="detail-card p-3">
+                                <h5 class="text-secondary mb-3"><i class="fas fa-info-circle me-2"></i>Basic Information</h5>
+                                <div class="mb-2">
+                                    <span class="fw-bold text-dark-blue">Title:</span>
+                                    <span class="ms-2">@evnts.Title</span>
+                                </div>
+                                <div class="mb-2">
+                                    <span class="fw-bold text-dark-blue">Category:</span>
+                                    <span class="ms-2">@evnts.Category</span>
+                                </div>
+                                <div>
+                                    <span class="fw-bold text-dark-blue">Date & Time:</span>
+                                    <span class="ms-2">@evnts.EventDateTime.ToString("f")</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Venue and Tickets -->
+                        <div class="col-md-6">
+                            <div class="detail-card p-3">
+                                <h5 class="text-secondary mb-3"><i class="fas fa-map-marker-alt me-2"></i>Venue & Tickets</h5>
+                                <div class="mb-2">
+                                    <span class="fw-bold text-dark-blue">Venue:</span>
+                                    <span class="ms-2">@evnts.Venue</span>
+                                </div>
+                                <div class="mb-2">
+                                    <span class="fw-bold text-dark-blue">Ticket Price:</span>
+                                    <span class="ms-2">@evnts.TicketPrice.ToString("C")</span>
+                                </div>
+                                <div>
+                                    <span class="fw-bold text-dark-blue">Maximum Seats:</span>
+                                    <span class="ms-2">@evnts.MaximumSeats</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <EditForm method="post" Model="evnts" OnValidSubmit="DeleteEvnts" FormName="delete" Enhance>
+                    <div class="d-flex flex-column flex-md-row justify-content-md-end gap-3 mt-4 pt-3 border-top">
+                        <a href="/evnts" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-arrow-left me-2"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-danger btn-lg px-4" disabled="@(evnts is null)">
+                            <i class="fas fa-trash-alt me-2"></i>Permanently Delete
+                        </button>
+                    </div>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    :root {
+        --dark-blue: #0a2463;
+        --light-blue: #e6f2ff;
+        --danger-red: #d62839;
+    }
+
+    .bg-dark-blue-gradient {
+        background: linear-gradient(135deg, var(--dark-blue) 0%, #1e3b8a 100%);
+    }
+
+    .text-dark-blue {
+        color: var(--dark-blue);
+    }
+
+    .bg-light-blue {
+        background-color: var(--light-blue);
+    }
+
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+        border: none;
+    }
+
+    .card-header {
+        border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .detail-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        height: 100%;
+        transition: transform 0.2s;
+    }
+
+        .detail-card:hover {
+            transform: translateY(-3px);
+        }
+
+    .btn-danger {
+        background-color: var(--danger-red);
+        border-color: var(--danger-red);
+        transition: all 0.3s;
+        font-weight: 500;
+    }
+
+        .btn-danger:hover {
+            background-color: #b21e2d;
+            border-color: #9c1b27;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(214, 40, 57, 0.25);
+        }
+
+    .btn-outline-secondary {
+        transition: all 0.3s;
+        font-weight: 500;
+    }
+
+        .btn-outline-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.15);
+        }
+
+    .alert-warning {
+        background-color: #fff3cd;
+        border-left: 4px solid #ffc107;
+    }
+
+    .rounded-3 {
+        border-radius: 12px !important;
+    }
+</style>
+
+@code {
+    private Evnts? evnts;
+
+    [SupplyParameterFromQuery]
+    private int EventId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        evnts = await context.Evnts
+            .FirstOrDefaultAsync(m => m.EventId == EventId);
+
+        if (evnts is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task DeleteEvnts()
+    {
+        using var context = DbFactory.CreateDbContext();
+        try
+        {
+            context.Evnts.Remove(evnts!);
+            await context.SaveChangesAsync();
+            NavigationManager.NavigateTo("/evnts");
+        }
+        catch (Exception ex)
+        {
+            // Error handling could be added here
+            Console.WriteLine($"Error deleting event: {ex.Message}");
+        }
+    }
+}

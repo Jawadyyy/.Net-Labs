@@ -1,0 +1,137 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "J:\\Work\\VP\\MovieBookingSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|j:\\work\\vp\\moviebookingsystem\\services\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|solutionrelative:services\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|j:\\work\\vp\\moviebookingsystem\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|solutionrelative:models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|j:\\work\\vp\\moviebookingsystem\\components\\pages\\bookingpages\\edit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|solutionrelative:components\\pages\\bookingpages\\edit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|j:\\work\\vp\\moviebookingsystem\\components\\pages\\bookingpages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|solutionrelative:components\\pages\\bookingpages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|j:\\work\\vp\\moviebookingsystem\\components\\pages\\bookingpages\\delete.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|solutionrelative:components\\pages\\bookingpages\\delete.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|j:\\work\\vp\\moviebookingsystem\\components\\pages\\bookingpages\\details.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|solutionrelative:components\\pages\\bookingpages\\details.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|j:\\work\\vp\\moviebookingsystem\\components\\pages\\bookingpages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D80D13D5-2E17-483D-85C6-7DA70B01E262}|MovieBookingSystem.csproj|solutionrelative:components\\pages\\bookingpages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\MovieBookingSystem\\Models\\Booking.cs",
+              "RelativeDocumentMoniker": "Models\\Booking.cs",
+              "ToolTip": "J:\\Work\\VP\\MovieBookingSystem\\Models\\Booking.cs",
+              "RelativeToolTip": "Models\\Booking.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T10:42:06.776Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookingService.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\MovieBookingSystem\\Services\\BookingService.cs",
+              "RelativeDocumentMoniker": "Services\\BookingService.cs",
+              "ToolTip": "J:\\Work\\VP\\MovieBookingSystem\\Services\\BookingService.cs",
+              "RelativeToolTip": "Services\\BookingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T13:16:49.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Edit.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\MovieBookingSystem\\Components\\Pages\\BookingPages\\Edit.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\BookingPages\\Edit.razor",
+              "ToolTip": "J:\\Work\\VP\\MovieBookingSystem\\Components\\Pages\\BookingPages\\Edit.razor",
+              "RelativeToolTip": "Components\\Pages\\BookingPages\\Edit.razor",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAIwGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-22T13:15:18.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Details.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\MovieBookingSystem\\Components\\Pages\\BookingPages\\Details.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\BookingPages\\Details.razor",
+              "ToolTip": "J:\\Work\\VP\\MovieBookingSystem\\Components\\Pages\\BookingPages\\Details.razor",
+              "RelativeToolTip": "Components\\Pages\\BookingPages\\Details.razor",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAkwE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-22T13:15:16.16Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Delete.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\MovieBookingSystem\\Components\\Pages\\BookingPages\\Delete.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\BookingPages\\Delete.razor",
+              "ToolTip": "J:\\Work\\VP\\MovieBookingSystem\\Components\\Pages\\BookingPages\\Delete.razor",
+              "RelativeToolTip": "Components\\Pages\\BookingPages\\Delete.razor",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAkwFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-22T13:14:03.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Create.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\MovieBookingSystem\\Components\\Pages\\BookingPages\\Create.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\BookingPages\\Create.razor",
+              "ToolTip": "J:\\Work\\VP\\MovieBookingSystem\\Components\\Pages\\BookingPages\\Create.razor",
+              "RelativeToolTip": "Components\\Pages\\BookingPages\\Create.razor",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAIwGIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-22T13:14:01.539Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\MovieBookingSystem\\Components\\Pages\\BookingPages\\Index.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\BookingPages\\Index.razor",
+              "ToolTip": "J:\\Work\\VP\\MovieBookingSystem\\Components\\Pages\\BookingPages\\Index.razor",
+              "RelativeToolTip": "Components\\Pages\\BookingPages\\Index.razor",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAkwHoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-22T13:13:56.716Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

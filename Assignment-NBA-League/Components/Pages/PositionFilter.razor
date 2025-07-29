@@ -1,0 +1,35 @@
+﻿@using HoopMetrics.Services
+@inject IPlayerService PlayerService
+
+<div class="position-filter-container">
+    <h5>Filter by Position</h5>
+    <div class="position-buttons">
+        @foreach (var position in PlayerService.GetAvailablePositions())
+        {
+            <button type="button"
+                    class="btn position-btn @(SelectedPosition == position ? "active" : "")"
+                    @onclick="() => OnPositionSelected(position)">
+                @position
+            </button>
+        }
+        <button type="button"
+                class="btn position-btn all-btn @(string.IsNullOrEmpty(SelectedPosition) ? "active" : "")"
+                @onclick="() => OnPositionSelected(null)">
+            All Positions
+        </button>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string SelectedPosition { get; set; }
+
+    [Parameter]
+    public EventCallback<string> SelectedPositionChanged { get; set; }
+
+    private async Task OnPositionSelected(string position)
+    {
+        SelectedPosition = position;
+        await SelectedPositionChanged.InvokeAsync(position);
+    }
+}

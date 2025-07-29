@@ -1,0 +1,186 @@
+﻿@page "/evnts/create"
+@using Microsoft.EntityFrameworkCore
+@using EMS.Models
+@inject IDbContextFactory<EMS.Data.EMSContext> DbFactory
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<PageTitle>Create Event</PageTitle>
+
+<div class="container py-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-dark-blue-gradient text-white py-3">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-calendar-plus fa-lg me-3"></i>
+                <h3 class="mb-0">Create New Event</h3>
+            </div>
+        </div>
+
+        <div class="card-body p-4">
+            <EditForm method="post" Model="Evnts" OnValidSubmit="AddEvnts" FormName="create" Enhance>
+                <DataAnnotationsValidator />
+                <ValidationSummary class="alert alert-danger" role="alert" />
+
+                <div class="row g-3">
+                    <!-- Event Title -->
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <InputText id="title" @bind-Value="Evnts.Title" class="form-control" aria-required="true" placeholder=" " />
+                            <label for="title" class="text-dark-blue">Event Title*</label>
+                            <ValidationMessage For="() => Evnts.Title" class="text-danger small" />
+                        </div>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <InputText id="category" @bind-Value="Evnts.Category" class="form-control" placeholder=" " />
+                            <label for="category" class="text-dark-blue">Category</label>
+                            <ValidationMessage For="() => Evnts.Category" class="text-danger small" />
+                        </div>
+                    </div>
+
+                    <!-- Date & Time -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <InputDate id="eventdatetime" @bind-Value="Evnts.EventDateTime" class="form-control" aria-required="true" placeholder=" " />
+                            <label for="eventdatetime" class="text-dark-blue">Event Date & Time*</label>
+                            <ValidationMessage For="() => Evnts.EventDateTime" class="text-danger small" />
+                        </div>
+                    </div>
+
+                    <!-- Venue -->
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <InputText id="venue" @bind-Value="Evnts.Venue" class="form-control" aria-required="true" placeholder=" " />
+                            <label for="venue" class="text-dark-blue">Venue*</label>
+                            <ValidationMessage For="() => Evnts.Venue" class="text-danger small" />
+                        </div>
+                    </div>
+
+                    <!-- Ticket Price -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <InputNumber id="ticketprice" @bind-Value="Evnts.TicketPrice" class="form-control" aria-required="true" placeholder=" " />
+                            <label for="ticketprice" class="text-dark-blue">Ticket Price*</label>
+                            <ValidationMessage For="() => Evnts.TicketPrice" class="text-danger small" />
+                        </div>
+                    </div>
+
+                    <!-- Maximum Seats -->
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <InputNumber id="maximumseats" @bind-Value="Evnts.MaximumSeats" class="form-control" aria-required="true" placeholder=" " />
+                            <label for="maximumseats" class="text-dark-blue">Maximum Seats*</label>
+                            <ValidationMessage For="() => Evnts.MaximumSeats" class="text-danger small" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-md-row justify-content-md-end gap-3 mt-4 pt-3 border-top">
+                    <a href="/evnts" class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-arrow-left me-2"></i>Cancel
+                    </a>
+                    <button type="submit" class="btn btn-primary btn-lg px-4">
+                        <i class="fas fa-save me-2"></i>Create Event
+                    </button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+<style>
+    :root {
+        --dark-blue: #0a2463;
+        --light-blue: #e6f2ff;
+        --primary-blue: #0d6efd;
+    }
+
+    .bg-dark-blue-gradient {
+        background: linear-gradient(135deg, var(--dark-blue) 0%, #1e3b8a 100%);
+    }
+
+    .text-dark-blue {
+        color: var(--dark-blue);
+    }
+
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+        border: none;
+    }
+
+    .card-header {
+        border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .form-floating {
+        position: relative;
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 1rem 0.75rem;
+        border: 1px solid #ced4da;
+        transition: all 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+    .form-floating label {
+        color: #6c757d;
+        transition: all 0.2s;
+    }
+
+    .form-floating .form-control:focus ~ label,
+    .form-floating .form-control:not(:placeholder-shown) ~ label {
+        color: var(--dark-blue);
+        transform: scale(0.85) translateY(-0.8rem) translateX(0.15rem);
+    }
+
+    .btn-primary {
+        background-color: var(--primary-blue);
+        border-color: var(--primary-blue);
+        transition: all 0.3s;
+        font-weight: 500;
+    }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.25);
+        }
+
+    .btn-outline-secondary {
+        transition: all 0.3s;
+        font-weight: 500;
+    }
+
+        .btn-outline-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.15);
+        }
+
+    .alert-danger {
+        border-left: 4px solid #dc3545;
+    }
+</style>
+
+@code {
+    [SupplyParameterFromForm]
+    private Evnts Evnts { get; set; } = new();
+
+    private async Task AddEvnts()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Evnts.Add(Evnts);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/evnts");
+    }
+}

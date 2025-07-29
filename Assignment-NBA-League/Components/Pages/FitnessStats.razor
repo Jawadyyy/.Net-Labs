@@ -1,0 +1,43 @@
+﻿@using HoopMetrics.Models
+@using HoopMetrics.Services
+@rendermode InteractiveServer
+@inject IStatsCalculator StatsCalculator
+
+@if (Player != null)
+{
+    <div class="stats-card fitness-card">
+        <div class="card-header fitness-header">
+            <h5>Fitness Stats</h5>
+            <span class="efficiency-badge">
+                Efficiency: @StatsCalculator.CalculateEfficiency(
+            Player.PerformanceStats.PointsScored,
+            Player.PerformanceStats.Assists,
+            Player.PerformanceStats.Rebounds,
+            Player.FitnessStats.MinutesPlayed).ToString("F2")
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="stat-row">
+                <div class="stat-item">
+                    <div class="stat-value">@Player.FitnessStats.MinutesPlayed</div>
+                    <div class="stat-label">Minutes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">@Player.FitnessStats.SprintCount</div>
+                    <div class="stat-label">Sprints</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">
+                        @((Player.FitnessStats.SprintCount / (double)Player.FitnessStats.MinutesPlayed).ToString("F2"))
+                    </div>
+                    <div class="stat-label">Sprints/Min</div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public Player Player { get; set; }
+}

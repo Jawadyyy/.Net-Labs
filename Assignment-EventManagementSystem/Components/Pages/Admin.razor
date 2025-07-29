@@ -1,0 +1,631 @@
+﻿        @page "/admin"
+        @using Microsoft.AspNetCore.Components.QuickGrid
+        @using Microsoft.EntityFrameworkCore
+        @using EMS.Models
+        @using EMS.Data
+        @implements IAsyncDisposable
+        @inject IDbContextFactory<EMSContext> DbFactory
+        @inject NavigationManager NavigationManager
+
+<PageTitle>Admin Dashboard</PageTitle>
+
+<div class="dashboard-container">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <h1>Event Horizon Admin</h1>
+            <div class="user-profile">
+                <span class="welcome">Welcome, Admin</span>
+                <div class="avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Sidebar -->
+        <nav class="dashboard-sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-calendar-star"></i>
+                <span>Admin Portal</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="/admin">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-wrapper">
+            @if (events == null || bookings == null)
+            {
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Loading dashboard data...</p>
+                </div>
+            }
+            else
+            {
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon bg-blue">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Total Events</h3>
+                            <p>@events.Count</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="card-icon bg-green">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Total Bookings</h3>
+                            <p>@bookings.Count</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="card-icon bg-purple">
+                            <i class="fas fa-chair"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Total Seats</h3>
+                            <p>@events.Sum(e => e.MaximumSeats)</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="card-icon bg-orange">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Seats Booked</h3>
+                            <p>@bookings.Sum(b => b.NumberOfSeats)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Events Section -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2><i class="fas fa-calendar"></i> Events Management</h2>
+                        <button class="btn btn-primary" onclick="window.location.href='/evnts/create'">
+                            <i class="fas fa-plus"></i> Add Event
+                        </button>
+                    </div>
+                    <div class="section-body">
+                        <QuickGrid Items="events.AsQueryable()" Class="modern-grid">
+                            <PropertyColumn Property="e => e.Title" Title="Event Title" />
+                            <PropertyColumn Property="e => e.EventDateTime" Format="yyyy-MM-dd HH:mm" Title="Date & Time" />
+                            <PropertyColumn Property="e => e.Venue" Title="Venue" />
+                            <PropertyColumn Property="e => e.MaximumSeats" Title="Max Seats" />
+                            <TemplateColumn Title="Actions" Context="e">
+                                <div class="action-buttons">
+                                    <a href="@($"evnts/edit?eventid={e.EventId}")" class="btn btn-sm btn-edit">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <a href="@($"evnts/delete?eventid={e.EventId}")" class="btn btn-sm btn-delete">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </a>
+                                </div>
+                            </TemplateColumn>
+                        </QuickGrid>
+                    </div>
+                </div>
+
+                <!-- Bookings Section -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2><i class="fas fa-ticket-alt"></i> Bookings Management</h2>
+                    </div>
+                    <div class="section-body">
+                        <QuickGrid Items="bookings.AsQueryable()" Class="modern-grid">
+                            <PropertyColumn Property="b => b.Name" Title="Attendee" />
+                            <PropertyColumn Property="b => b.Email" Title="Email" />
+                            <PropertyColumn Property="b => b.Event.Title" Title="Event" />
+                            <PropertyColumn Property="b => b.NumberOfSeats" Title="Seats" />
+                            <TemplateColumn Title="Actions" Context="b">
+                                <a href="@($"bookings/delete?bookingid={b.BookingId}")" class="btn btn-sm btn-delete">
+                                    <i class="fas fa-trash"></i> Delete
+                                </a>
+                            </TemplateColumn>
+                        </QuickGrid>
+                    </div>
+                </div>
+            }
+        </div>
+    </main>
+</div>
+
+@code {
+    private List<Evnts>? events;
+    private List<Bookings>? bookings;
+    private EMSContext? context;
+
+    protected override async Task OnInitializedAsync()
+    {
+        context = DbFactory.CreateDbContext();
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        events = await context.Evnts.ToListAsync();
+        bookings = await context.Bookings.Include(b => b.Event).ToListAsync();
+    }
+
+    private async Task DeleteEvent(int eventId)
+    {
+        if (context == null) return;
+
+        var eventToDelete = await context.Evnts.FindAsync(eventId);
+        if (eventToDelete != null)
+        {
+            context.Evnts.Remove(eventToDelete);
+            await context.SaveChangesAsync();
+            await LoadData();
+        }
+    }
+
+    private async Task DeleteBooking(int bookingId)
+    {
+        if (context == null) return;
+
+        var bookingToDelete = await context.Bookings.FindAsync(bookingId);
+        if (bookingToDelete != null)
+        {
+            context.Bookings.Remove(bookingToDelete);
+            await context.SaveChangesAsync();
+            await LoadData();
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (context != null)
+        {
+            await context.DisposeAsync();
+        }
+    }
+        }
+
+
+<style>
+    /* Modern Color Scheme */
+    :root {
+        --primary: #4361ee;
+        --primary-light: #4895ef;
+        --secondary: #3f37c9;
+        --accent: #f72585;
+        --success: #4cc9f0;
+        --warning: #f8961e;
+        --danger: #ef233c;
+        --dark: #2b2d42;
+        --medium: #8d99ae;
+        --light: #edf2f4;
+        --white: #ffffff;
+        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background-color: #f8fafc;
+        color: var(--dark);
+    }
+
+    /* Layout */
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .dashboard-header {
+        background-color: var(--white);
+        box-shadow: var(--card-shadow);
+        padding: 0 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: -0.5px;
+    }
+
+    .dashboard-main {
+        display: flex;
+        flex: 1;
+    }
+
+    .dashboard-sidebar {
+        width: 240px;
+        background-color: var(--white);
+        border-right: 1px solid #e2e8f0;
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+
+    .sidebar-brand {
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem 1.5rem;
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+        .sidebar-brand i {
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+    .sidebar-menu {
+        list-style: none;
+    }
+
+        .sidebar-menu li {
+            margin-bottom: 0.25rem;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: var(--medium);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+            .sidebar-menu a:hover {
+                color: var(--primary);
+                background-color: #f1f5fe;
+            }
+
+            .sidebar-menu a i {
+                margin-right: 0.75rem;
+                width: 20px;
+                text-align: center;
+            }
+
+        .sidebar-menu .active a {
+            color: var(--primary);
+            background-color: #f1f5fe;
+            border-left: 3px solid var(--primary);
+        }
+
+    .content-wrapper {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Summary Cards */
+    .summary-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .summary-card {
+        background-color: var(--white);
+        border-radius: 10px;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+    }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: white;
+        font-size: 1.25rem;
+    }
+
+    .bg-blue {
+        background-color: var(--primary);
+    }
+
+    .bg-green {
+        background-color: var(--success);
+    }
+
+    .bg-purple {
+        background-color: #7b2cbf;
+    }
+
+    .bg-orange {
+        background-color: var(--warning);
+    }
+
+    .card-content h3 {
+        font-size: 0.9rem;
+        color: var(--medium);
+        margin-bottom: 0.25rem;
+    }
+
+    .card-content p {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark);
+    }
+
+    /* Section Cards */
+    .section-card {
+        background-color: var(--white);
+        border-radius: 10px;
+        box-shadow: var(--card-shadow);
+        margin-bottom: 2rem;
+        overflow: hidden;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+        .section-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+
+            .section-header h2 i {
+                margin-right: 0.75rem;
+                color: var(--primary);
+            }
+
+    .section-body {
+        padding: 1.5rem;
+    }
+
+    /* Tables */
+    .modern-grid {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background-color: var(--white);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+        .modern-grid th {
+            background-color: #f8fafc;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--medium);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .modern-grid td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .modern-grid tr:last-child td {
+            border-bottom: none;
+        }
+
+        .modern-grid tr:hover td {
+            background-color: #f8fafc;
+        }
+
+    /* Buttons */
+    .btn {
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+        display: inline-flex;
+        align-items: center;
+    }
+
+        .btn i {
+            margin-right: 0.5rem;
+        }
+
+    .btn-primary {
+        background-color: var(--primary);
+        color: var(--white);
+    }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+    .btn-sm {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .btn-edit {
+        background-color: var(--warning);
+        color: var(--white);
+        margin-right: 0.5rem;
+    }
+
+        .btn-edit:hover {
+            background-color: #e67e22;
+        }
+
+    .btn-delete {
+        background-color: var(--danger);
+        color: var(--white);
+    }
+
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+
+    .action-buttons {
+        display: flex;
+    }
+
+    /* Loading State */
+    .loading-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 0;
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(67, 97, 238, 0.1);
+        border-radius: 50%;
+        border-top-color: var(--primary);
+        animation: spin 1s ease-in-out infinite;
+        margin-bottom: 1rem;
+    }
+
+    .loading-state p {
+        color: var(--medium);
+    }
+
+    @@keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* User Profile */
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .welcome {
+        font-size: 0.9rem;
+        color: var(--medium);
+    }
+
+    .avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f1f5fe;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+    }
+
+    /* Responsive */
+    @@media (max-width: 1024px) {
+        .dashboard-sidebar {
+            width: 200px;
+        }
+
+        .content-wrapper {
+            padding: 1.5rem;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .dashboard-sidebar {
+            position: fixed;
+            left: -240px;
+            top: 70px;
+            bottom: 0;
+            z-index: 20;
+            transition: transform 0.3s ease;
+        }
+
+            .dashboard-sidebar.active {
+                transform: translateX(240px);
+            }
+
+        .content-wrapper {
+            padding: 1.25rem;
+        }
+
+        .summary-cards {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .summary-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .btn-edit {
+            margin-right: 0;
+        }
+    }
+</style>

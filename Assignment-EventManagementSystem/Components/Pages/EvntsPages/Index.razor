@@ -1,0 +1,41 @@
+﻿@page "/evnts"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using EMS.Models
+@using EMS.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<EMS.Data.EMSContext> DbFactory
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="evnts/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.Evnts">
+    <PropertyColumn Property="evnts => evnts.Title" />
+    <PropertyColumn Property="evnts => evnts.Category" />
+    <PropertyColumn Property="evnts => evnts.EventDateTime" />
+    <PropertyColumn Property="evnts => evnts.Venue" />
+    <PropertyColumn Property="evnts => evnts.TicketPrice" />
+    <PropertyColumn Property="evnts => evnts.MaximumSeats" />
+
+    <TemplateColumn Context="evnts">
+        <a href="@($"evnts/edit?eventid={evnts.EventId}")">Edit</a> |
+        <a href="@($"evnts/details?eventid={evnts.EventId}")">Details</a> |
+        <a href="@($"evnts/delete?eventid={evnts.EventId}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private EMSContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

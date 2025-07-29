@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "J:\\Work\\VP\\HoopMetrics\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\HoopMetrics.bundle.scp.css",
+      "PackagePath": "staticwebassets\\HoopMetrics.ub2blcnq88.bundle.scp.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\HoopMetrics\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\HoopMetrics\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\HoopMetrics\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "J:\\Work\\VP\\HoopMetrics\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HoopMetrics.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HoopMetrics.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.HoopMetrics.props",
+      "PackagePath": "build\\HoopMetrics.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.HoopMetrics.props",
+      "PackagePath": "buildMultiTargeting\\HoopMetrics.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.HoopMetrics.props",
+      "PackagePath": "buildTransitive\\HoopMetrics.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

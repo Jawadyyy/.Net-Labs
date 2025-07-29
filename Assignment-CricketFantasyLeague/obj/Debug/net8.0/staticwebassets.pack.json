@@ -1,0 +1,77 @@
+{
+  "Files": [
+    {
+      "Id": "J:\\Work\\VP\\cfw\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\cfw.bundle.scp.css",
+      "PackagePath": "staticwebassets\\cfw.i7b5d1mg0g.bundle.scp.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\gallery.css",
+      "PackagePath": "staticwebassets\\gallery.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\images\\abd.jpg",
+      "PackagePath": "staticwebassets\\images\\abd.jpg"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\images\\boult.png",
+      "PackagePath": "staticwebassets\\images\\boult.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\images\\bumrah.jpg",
+      "PackagePath": "staticwebassets\\images\\bumrah.jpg"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\images\\fantasy.jpg",
+      "PackagePath": "staticwebassets\\images\\fantasy.jpg"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\images\\max.png",
+      "PackagePath": "staticwebassets\\images\\max.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\images\\raza.png",
+      "PackagePath": "staticwebassets\\images\\raza.png"
+    },
+    {
+      "Id": "J:\\Work\\VP\\cfw\\wwwroot\\images\\umar.jpg",
+      "PackagePath": "staticwebassets\\images\\umar.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.cfw.props",
+      "PackagePath": "build\\cfw.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.cfw.props",
+      "PackagePath": "buildMultiTargeting\\cfw.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.cfw.props",
+      "PackagePath": "buildTransitive\\cfw.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.cfw.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.cfw.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

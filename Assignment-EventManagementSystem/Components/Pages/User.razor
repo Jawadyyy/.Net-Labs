@@ -1,0 +1,571 @@
+﻿@page "/user"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using Microsoft.EntityFrameworkCore
+@using EMS.Models
+@using EMS.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<EMSContext> DbFactory
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<PageTitle>Event Booking</PageTitle>
+
+<div class="dashboard-container">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <h1>User Booking</h1>
+            <div class="user-profile">
+                <span class="welcome">Welcome back!</span>
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Sidebar -->
+        <nav class="dashboard-sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-calendar-star"></i>
+                <span>Event Horizon</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="/user">
+                        <i class="fas fa-calendar-day"></i>
+                        <span>Available Events</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-wrapper">
+            <div class="content-header">
+                <h2>Available Events</h2>
+                <div class="search-control">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search events..." @bind="searchTerm" />
+                </div>
+            </div>
+
+            @if (upcomingEvents == null)
+            {
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Loading events...</p>
+                </div>
+            }
+            else if (!FilteredEvents.Any())
+            {
+                <div class="empty-state">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>No events available</h3>
+                    <p>There are currently no events matching your search.</p>
+                </div>
+            }
+            else
+            {
+                <div class="events-grid">
+                    <QuickGrid Items="FilteredEvents" Class="modern-grid">
+                        <PropertyColumn Property="e => e.Title" Title="EVENT" />
+                        <PropertyColumn Property="e => e.Category" Title="CATEGORY" />
+                        <PropertyColumn Property="e => e.EventDateTime" Format="ddd, MMM dd • h:mm tt" Title="DATE & TIME" />
+                        <PropertyColumn Property="e => e.Venue" Title="LOCATION" />
+                        <PropertyColumn Property="e => e.TicketPrice" Format="C" Title="PRICE" />
+                        <TemplateColumn Title="AVAILABILITY" Context="e">
+                            <div class="availability @GetSeatAvailabilityClass(e.AvailableSeats)">
+                                @e.AvailableSeats seats left
+                            </div>
+                        </TemplateColumn>
+                        <TemplateColumn Title="ACTIONS" Context="e">
+                            @if (bookedEventIds.Contains(e.EventId))
+                            {
+                                <button class="book-button booked" disabled>
+                                    <i class="fas fa-check-circle"></i> Booked
+                                </button>
+                            }
+                            else if (e.AvailableSeats <= 0)
+                            {
+                                <button class="book-button sold-out" disabled>
+                                    <i class="fas fa-times-circle"></i> Sold Out
+                                </button>
+                            }
+                            else
+                            {
+                                <button class="book-button" onclick="@(() => NavigateToBooking(e.EventId))">
+                                    <i class="fas fa-ticket-alt"></i> Book Now
+                                </button>
+                            }
+                        </TemplateColumn>
+                    </QuickGrid>
+                </div>
+            }
+        </div>
+    </main>
+</div>
+
+@code {
+    private List<EventWithAvailability>? upcomingEvents;
+    private EMSContext? context;
+    private string searchTerm = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        context = DbFactory.CreateDbContext();
+        await LoadEvents();
+    }
+
+    private async Task LoadEvents()
+    {
+        if (context == null) return;
+
+
+        var events = await context.Evnts
+            .Where(e => e.EventDateTime > DateTime.Now)
+            .OrderBy(e => e.EventDateTime)
+            .ToListAsync();
+
+        // Get events the user has already booked
+        bookedEventIds = await context.Bookings
+            .Select(b => b.EventId)
+            .ToListAsync();
+
+        upcomingEvents = new List<EventWithAvailability>();
+
+        foreach (var e in events)
+        {
+            var bookedSeats = await context.Bookings
+                .Where(b => b.EventId == e.EventId)
+                .SumAsync(b => (int?)b.NumberOfSeats) ?? 0;
+
+            upcomingEvents.Add(new EventWithAvailability
+                {
+                    EventId = e.EventId,
+                    Title = e.Title,
+                    Category = e.Category,
+                    EventDateTime = e.EventDateTime,
+                    Venue = e.Venue,
+                    TicketPrice = e.TicketPrice,
+                    MaximumSeats = e.MaximumSeats,
+                    AvailableSeats = e.MaximumSeats - bookedSeats
+                });
+        }
+    }
+
+    private IQueryable<EventWithAvailability> FilteredEvents =>
+        upcomingEvents?.AsQueryable().Where(e =>
+            string.IsNullOrEmpty(searchTerm) ||
+            e.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+            e.Category.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+            e.Venue.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+        ) ?? Enumerable.Empty<EventWithAvailability>().AsQueryable();
+
+    private string GetSeatAvailabilityClass(int availableSeats)
+    {
+        if (availableSeats <= 0) return "none";
+        if (availableSeats < 10) return "low";
+        return "available";
+    }
+
+    private void NavigateToBooking(int eventId)
+    {
+        NavigationManager.NavigateTo($"/bookings/create?eventid={eventId}");
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (context != null)
+        {
+            await context.DisposeAsync();
+        }
+    }
+
+    private List<int> bookedEventIds = new List<int>();
+
+    private class EventWithAvailability : Evnts
+    {
+        public int AvailableSeats { get; set; }
+    }
+}
+
+<style>
+    /* Modern Color Scheme */
+    :root {
+        --primary: #4361ee;
+        --primary-light: #4895ef;
+        --secondary: #3f37c9;
+        --accent: #f72585;
+        --success: #4cc9f0;
+        --warning: #f8961e;
+        --danger: #ef233c;
+        --dark: #2b2d42;
+        --medium: #8d99ae;
+        --light: #edf2f4;
+        --white: #ffffff;
+        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background-color: #f8fafc;
+        color: var(--dark);
+    }
+
+    /* Layout */
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .dashboard-header {
+        background-color: var(--white);
+        box-shadow: var(--card-shadow);
+        padding: 0 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: -0.5px;
+    }
+
+    .dashboard-main {
+        display: flex;
+        flex: 1;
+    }
+
+    .dashboard-sidebar {
+        width: 240px;
+        background-color: var(--white);
+        border-right: 1px solid #e2e8f0;
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+
+    .sidebar-brand {
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem 1.5rem;
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+        .sidebar-brand i {
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+    .sidebar-menu {
+        list-style: none;
+    }
+
+        .sidebar-menu li {
+            margin-bottom: 0.25rem;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: var(--medium);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+            .sidebar-menu a:hover {
+                color: var(--primary);
+                background-color: #f1f5fe;
+            }
+
+            .sidebar-menu a i {
+                margin-right: 0.75rem;
+                width: 20px;
+                text-align: center;
+            }
+
+        .sidebar-menu .active a {
+            color: var(--primary);
+            background-color: #f1f5fe;
+            border-left: 3px solid var(--primary);
+        }
+
+    .content-wrapper {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+        .content-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+    /* Search Control */
+    .search-control {
+        position: relative;
+        width: 300px;
+    }
+
+        .search-control i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--medium);
+        }
+
+        .search-control input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background-color: var(--white);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+            .search-control input:focus {
+                outline: none;
+                border-color: var(--primary-light);
+                box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            }
+
+    /* Events Grid */
+    .modern-grid {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background-color: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+    }
+
+        .modern-grid th {
+            background-color: #f8fafc;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--medium);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .modern-grid td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .modern-grid tr:last-child td {
+            border-bottom: none;
+        }
+
+        .modern-grid tr:hover td {
+            background-color: #f8fafc;
+        }
+
+    /* Availability Indicator */
+    .availability {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+        .availability.available {
+            background-color: #e6f7ff;
+            color: var(--success);
+        }
+
+        .availability.low {
+            background-color: #fff7e6;
+            color: var(--warning);
+        }
+
+        .availability.none {
+            background-color: #fff1f0;
+            color: var(--danger);
+        }
+
+    /* Book Button */
+    /* Book Button States */
+    .book-button {
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+        background-color: var(--primary);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+        .book-button:hover {
+            background-color: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        .book-button:disabled,
+        .book-button.sold-out {
+            background-color: #f1f5fe;
+            color: var(--medium);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .book-button.booked {
+            background-color: var(--success);
+            color: var(--white);
+            cursor: default;
+        }
+
+            .book-button.booked:hover {
+                background-color: var(--success);
+                transform: none;
+            }
+
+    /* Loading State */
+    .loading-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 0;
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(67, 97, 238, 0.1);
+        border-radius: 50%;
+        border-top-color: var(--primary);
+        animation: spin 1s ease-in-out infinite;
+        margin-bottom: 1rem;
+    }
+
+    .loading-state p {
+        color: var(--medium);
+    }
+
+    /* Empty State */
+    .empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 0;
+        text-align: center;
+    }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--medium);
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .empty-state p {
+            color: var(--medium);
+            max-width: 400px;
+        }
+
+    @@keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Responsive */
+    @@media (max-width: 1024px) {
+        .dashboard-sidebar {
+            width: 200px;
+        }
+
+        .content-wrapper {
+            padding: 1.5rem;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .dashboard-sidebar {
+            position: fixed;
+            left: -240px;
+            top: 70px;
+            bottom: 0;
+            z-index: 20;
+            transition: transform 0.3s ease;
+        }
+
+            .dashboard-sidebar.active {
+                transform: translateX(240px);
+            }
+
+        .content-wrapper {
+            padding: 1.25rem;
+        }
+
+        .content-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .search-control {
+            width: 100%;
+        }
+    }
+</style>

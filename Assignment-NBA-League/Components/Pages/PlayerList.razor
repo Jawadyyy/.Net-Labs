@@ -1,0 +1,117 @@
+﻿@using HoopMetrics.Models
+@using HoopMetrics.Services
+@rendermode InteractiveServer
+@inject IPlayerService PlayerService
+@inject NavigationManager NavigationManager
+
+<div class="player-list-container">
+    <PositionFilter SelectedPosition="@SelectedPosition"
+                    SelectedPositionChanged="@OnPositionFilterChanged" />
+
+    @if (players == null)
+    {
+        <div class="loading-spinner">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading players...</span>
+            </div>
+        </div>
+    }
+    else if (!players.Any())
+    {
+        <div class="alert alert-info">
+            No players found for the selected position.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Position</th>
+                        <th>Nationality</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var player in players)
+                    {
+                        <tr class="@(selectedPlayerId == player.Id ? "table-active" : "")">
+                            <td>
+                                <img src="@player.ImageUrl" class="player-thumbnail" alt="@player.Name" />
+                                @player.Name
+                            </td>
+                            <td>@player.Age</td>
+                            <td>@player.Position</td>
+                            <td>
+                                <span class="flag-icon flag-icon-@GetCountryCode(player.Nationality)"></span>
+                                @player.Nationality
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-primary"
+                                        @onclick="() => ViewPlayerStats(player.Id)">
+                                    View Stats
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+<style>
+    .player-thumbnail {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+        border: 2px solid #ddd;
+    }
+</style>
+
+@code {
+    private List<Player> players;
+    private int? selectedPlayerId;
+    private string SelectedPosition { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPlayers();
+    }
+
+    private async Task LoadPlayers()
+    {
+        players = await PlayerService.GetPlayersByPositionAsync(SelectedPosition);
+    }
+
+    private async Task OnPositionFilterChanged(string position)
+    {
+        SelectedPosition = position;
+        await LoadPlayers();
+    }
+
+    private void ViewPlayerStats(int playerId)
+    {
+        selectedPlayerId = playerId;
+        NavigationManager.NavigateTo($"/player/{playerId}");
+    }
+
+    private string GetCountryCode(string nationality)
+    {
+        var countryCodes = new Dictionary<string, string>
+        {
+            {"USA", "us"},
+            {"Greece", "gr"},
+            {"Slovenia", "si"},
+            {"Cameroon", "cm"},
+            {"Serbia", "rs"}
+        };
+
+        return countryCodes.TryGetValue(nationality, out var code) ? code : "us";
+    }
+}

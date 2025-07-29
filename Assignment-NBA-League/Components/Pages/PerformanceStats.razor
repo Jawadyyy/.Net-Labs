@@ -1,0 +1,37 @@
+﻿@using HoopMetrics.Models
+@using HoopMetrics.Services
+@inject IStatsCalculator StatsCalculator
+@rendermode InteractiveServer
+
+@if (Player != null)
+{
+    <div class="stats-card performance-card">
+        <div class="card-header performance-header">
+            <h5>Performance Stats</h5>
+            <span class="rating-badge">
+                Rating: @Player.PerformanceStats.PerformanceRating.ToString("F1")
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="stat-row">
+                <div class="stat-item">
+                    <div class="stat-value">@Player.PerformanceStats.PointsScored</div>
+                    <div class="stat-label">Points</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">@Player.PerformanceStats.Assists</div>
+                    <div class="stat-label">Assists</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">@Player.PerformanceStats.Rebounds</div>
+                    <div class="stat-label">Rebounds</div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public Player Player { get; set; }
+}

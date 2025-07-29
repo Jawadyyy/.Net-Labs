@@ -1,0 +1,221 @@
+﻿@page "/bookings/create"
+@using Microsoft.EntityFrameworkCore
+@using EMS.Models
+@inject IDbContextFactory<EMS.Data.EMSContext> DbFactory
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<PageTitle>Create Booking</PageTitle>
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-dark text-white">
+            <h3 class="mb-0">
+                <i class="fas fa-calendar-plus me-2"></i>Create Booking
+            </h3>
+        </div>
+
+        <div class="card-body">
+            @if (Event != null)
+            {
+                <div class="alert alert-primary border-primary mb-4">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-info-circle me-3 fs-4"></i>
+                        <div>
+                            <h4 class="alert-heading mb-2">@Event.Title</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="mb-1"><i class="far fa-clock me-2"></i><strong>Date:</strong> @Event.EventDateTime.ToString("yyyy-MM-dd HH:mm")</p>
+                                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i><strong>Venue:</strong> @Event.Venue</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-1"><i class="fas fa-chair me-2"></i><strong>Available Seats:</strong> @AvailableSeats</p>
+                                    <p class="mb-1"><i class="fas fa-ticket-alt me-2"></i><strong>Max Per Booking:</strong> @MaxAllowedSeats</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (AvailableSeats <= 0)
+            {
+                <div class="alert alert-warning d-flex align-items-center">
+                    <i class="fas fa-exclamation-triangle me-3 fs-4"></i>
+                    <div>
+                        <h4 class="alert-heading">Sold Out!</h4>
+                        <p class="mb-0">There are no available seats for this event.</p>
+                    </div>
+                </div>
+            }
+
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <EditForm method="post" Model="Bookings" OnValidSubmit="AddBookings" FormName="create" Enhance>
+                        <DataAnnotationsValidator />
+                        <ValidationSummary class="alert alert-danger" role="alert" />
+
+                        <div class="mb-4">
+                            <label for="name" class="form-label fw-bold text-dark">Full Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <InputText id="name" @bind-Value="Bookings.Name" class="form-control" aria-required="true" />
+                            </div>
+                            <ValidationMessage For="() => Bookings.Name" class="text-danger small" />
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="email" class="form-label fw-bold text-dark">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <InputText id="email" @bind-Value="Bookings.Email" class="form-control" aria-required="true" />
+                            </div>
+                            <ValidationMessage For="() => Bookings.Email" class="text-danger small" />
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="numberofseats" class="form-label fw-bold text-dark">Number of Seats</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white">
+                                    <i class="fas fa-users"></i>
+                                </span>
+                                <InputNumber id="numberofseats" @bind-Value="Bookings.NumberOfSeats"
+                                             class="form-control" aria-required="true"
+                                             min="1" max="@MaxAllowedSeats" />
+                            </div>
+                            <small class="text-muted">Maximum @MaxAllowedSeats seats per booking</small>
+                            <ValidationMessage For="() => Bookings.NumberOfSeats" class="text-danger small" />
+                        </div>
+
+                        <input type="hidden" name="Bookings.EventId" value="@Bookings.EventId" />
+
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-end mt-4">
+                            <a href="/" class="btn btn-outline-secondary me-md-2">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Events
+                            </a>
+                            <button type="submit" class="btn btn-primary" disabled="@(AvailableSeats <= 0 || Bookings.NumberOfSeats < 1)">
+                                <i class="fas fa-check-circle me-2"></i>Confirm Booking
+                            </button>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+    }
+
+    .form-control, .input-group-text {
+        border-radius: 5px;
+    }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        transition: all 0.2s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+            transform: translateY(-1px);
+        }
+
+    .btn-outline-secondary {
+        transition: all 0.2s;
+    }
+
+        .btn-outline-secondary:hover {
+            transform: translateY(-1px);
+        }
+
+    label {
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+@code {
+    [SupplyParameterFromForm]
+    private Bookings Bookings { get; set; } = new() { NumberOfSeats = 1 };
+
+    [SupplyParameterFromQuery]
+    private int EventId { get; set; }
+
+    private Evnts? Event { get; set; }
+    private int AvailableSeats { get; set; }
+    private int MaxAllowedSeats { get; set; } = 10;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            using var context = DbFactory.CreateDbContext();
+            Event = await context.Evnts.FirstOrDefaultAsync(e => e.EventId == EventId);
+
+            if (Event != null)
+            {
+                Bookings.EventId = EventId;
+                var bookedSeats = await context.Bookings
+                    .Where(b => b.EventId == EventId)
+                    .SumAsync(b => (int?)b.NumberOfSeats) ?? 0;
+
+                AvailableSeats = Event.MaximumSeats - bookedSeats;
+                MaxAllowedSeats = Math.Min(AvailableSeats, 10);
+
+                if (AvailableSeats < 0) AvailableSeats = 0;
+                if (MaxAllowedSeats < 1) MaxAllowedSeats = 1;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading event: {ex.Message}");
+        }
+    }
+
+    private async Task AddBookings()
+    {
+        using var context = DbFactory.CreateDbContext();
+
+        // Recheck availability
+        var eventInfo = await context.Evnts.FirstOrDefaultAsync(e => e.EventId == Bookings.EventId);
+        if (eventInfo == null)
+        {
+            // Handle error
+            return;
+        }
+
+        var bookedSeats = await context.Bookings
+            .Where(b => b.EventId == Bookings.EventId)
+            .SumAsync(b => (int?)b.NumberOfSeats) ?? 0;
+
+        var availableSeats = eventInfo.MaximumSeats - bookedSeats;
+
+        if (Bookings.NumberOfSeats > availableSeats)
+        {
+            // Show error message
+            return;
+        }
+
+        context.Bookings.Add(Bookings);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo($"/booking-confirmation/{Bookings.BookingId}");
+    }
+}

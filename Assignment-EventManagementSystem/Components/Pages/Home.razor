@@ -1,0 +1,243 @@
+﻿@page "/"
+
+<PageTitle>Event Horizon - Welcome</PageTitle>
+
+<div class="landing-page">
+    <header class="landing-header">
+        <div class="header-content">
+            <h1><i class="fas fa-calendar-star"></i> Event Horizon</h1>
+            <p class="tagline">Your premier event management solution</p>
+        </div>
+    </header>
+
+    <main class="landing-main">
+        <div class="welcome-section">
+            <h2>Welcome to Event Horizon</h2>
+            <p class="welcome-text">
+                Manage events effortlessly or book your next experience with our intuitive platform.
+                Select your role below to get started.
+            </p>
+        </div>
+
+        <div class="role-selection">
+            <a href="/admin" class="role-card admin-card">
+                <div class="card-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3>Admins</h3>
+                <p>Manage events, bookings, and system settings</p>
+                <div class="card-hover">
+                    <span>Access Admin Portal</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <a href="/user" class="role-card user-card">
+                <div class="card-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Users</h3>
+                <p>Browse and book upcoming events</p>
+                <div class="card-hover">
+                    <span>View Events</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+    </main>
+</div>
+
+<style>
+    /* Base Styles */
+    :root {
+        --primary: #4361ee;
+        --primary-light: #4895ef;
+        --secondary: #3f37c9;
+        --accent: #f72585;
+        --dark: #2b2d42;
+        --medium: #8d99ae;
+        --light: #edf2f4;
+        --white: #ffffff;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+    }
+
+    /* Landing Page Layout */
+    .landing-page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .landing-header {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--white);
+        padding: 2rem;
+        text-align: center;
+        box-shadow: var(--shadow);
+    }
+
+    .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .landing-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .tagline {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    .landing-main {
+        flex: 1;
+        padding: 3rem 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .welcome-section {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+        .welcome-section h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+    .welcome-text {
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        color: var(--dark);
+    }
+
+    /* Role Selection Cards */
+    .role-selection {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .role-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 400px;
+        background: var(--white);
+        border-radius: 10px;
+        padding: 2rem;
+        text-align: center;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        display: block;
+        color: inherit;
+    }
+
+        .role-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+        }
+
+    .card-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+        color: var(--white);
+    }
+
+    .admin-card .card-icon {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .user-card .card-icon {
+        background: linear-gradient(135deg, var(--accent), #f55d9a);
+    }
+
+    .role-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--dark);
+    }
+
+    .role-card p {
+        color: var(--medium);
+        margin-bottom: 2rem;
+    }
+
+    .card-hover {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--white);
+        padding: 1rem;
+        transform: translateY(100%);
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .admin-card .card-hover {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .user-card .card-hover {
+        background: linear-gradient(135deg, var(--accent), #f55d9a);
+    }
+
+    .role-card:hover .card-hover {
+        transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .landing-header h1 {
+            font-size: 2rem;
+        }
+
+        .role-selection {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .role-card {
+            width: 100%;
+        }
+    }
+</style>

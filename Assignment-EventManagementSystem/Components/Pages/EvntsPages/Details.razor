@@ -1,0 +1,56 @@
+﻿@page "/evnts/details"
+@using Microsoft.EntityFrameworkCore
+@using EMS.Models
+@inject IDbContextFactory<EMS.Data.EMSContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>Evnts</h2>
+    <hr />
+    @if (evnts is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">Title</dt>
+            <dd class="col-sm-10">@evnts.Title</dd>
+            <dt class="col-sm-2">Category</dt>
+            <dd class="col-sm-10">@evnts.Category</dd>
+            <dt class="col-sm-2">EventDateTime</dt>
+            <dd class="col-sm-10">@evnts.EventDateTime</dd>
+            <dt class="col-sm-2">Venue</dt>
+            <dd class="col-sm-10">@evnts.Venue</dd>
+            <dt class="col-sm-2">TicketPrice</dt>
+            <dd class="col-sm-10">@evnts.TicketPrice</dd>
+            <dt class="col-sm-2">MaximumSeats</dt>
+            <dd class="col-sm-10">@evnts.MaximumSeats</dd>
+        </dl>
+        <div>
+            <a href="@($"/evnts/edit?eventid={evnts.EventId}")">Edit</a> |
+            <a href="@($"/evnts")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private Evnts? evnts;
+
+    [SupplyParameterFromQuery]
+    private int EventId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        evnts = await context.Evnts.FirstOrDefaultAsync(m => m.EventId == EventId);
+
+        if (evnts is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

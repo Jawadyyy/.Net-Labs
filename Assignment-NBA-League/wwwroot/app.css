@@ -1,0 +1,332 @@
+/* Base Styles */
+:root {
+    --primary-color: #1a73e8;
+    --secondary-color: #34a853;
+    --danger-color: #ea4335;
+    --warning-color: #fbbc05;
+    --info-color: #4285f4;
+    --dark-color: #202124;
+    --light-color: #f8f9fa;
+    --gray-color: #dadce0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+    .header h1 {
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+
+.subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.main-content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Player List Styles */
+.player-list-container {
+    margin-top: 20px;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .table th {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 12px;
+        text-align: left;
+    }
+
+    .table td {
+        padding: 12px;
+        border-bottom: 1px solid var(--gray-color);
+    }
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.table-active {
+    background-color: rgba(26, 115, 232, 0.1) !important;
+}
+
+/* Position Filter Styles */
+.position-filter-container {
+    margin-bottom: 20px;
+}
+
+    .position-filter-container h5 {
+        margin-bottom: 10px;
+        color: var(--dark-color);
+    }
+
+.position-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.position-btn {
+    border: 1px solid var(--gray-color);
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+    .position-btn:hover {
+        background-color: var(--gray-color);
+    }
+
+    .position-btn.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+.all-btn.active {
+    background-color: var(--dark-color);
+    border-color: var(--dark-color);
+}
+
+/* Player Stats View */
+.player-stats-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.player-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--gray-color);
+}
+
+.player-info {
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+    .player-info h2 {
+        margin: 0;
+        color: var(--dark-color);
+    }
+
+.player-meta {
+    margin-top: 5px;
+    display: flex;
+    gap: 8px;
+}
+
+.back-button {
+    margin-right: 10px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Stats Cards */
+.stats-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .card-header h5 {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+.card-body {
+    padding: 15px;
+}
+
+.performance-card .card-header {
+    background-color: rgba(66, 133, 244, 0.1);
+    border-bottom: 2px solid var(--info-color);
+}
+
+.fitness-card .card-header {
+    background-color: rgba(52, 168, 83, 0.1);
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.injury-card .card-header {
+    background-color: rgba(234, 67, 53, 0.1);
+    border-bottom: 2px solid var(--danger-color);
+}
+
+.rating-badge {
+    background-color: var(--info-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.efficiency-badge {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.games-missed-badge {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Stat Items */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.stat-item {
+    flex: 1;
+    padding: 5px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Injury Details */
+.injury-details {
+    text-align: center;
+}
+
+.injury-type {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+    .injury-type.sprain {
+        background-color: rgba(251, 188, 5, 0.2);
+        color: #d18f00;
+    }
+
+    .injury-type.strain {
+        background-color: rgba(234, 67, 53, 0.2);
+        color: #c5221f;
+    }
+
+    .injury-type.none {
+        background-color: rgba(52, 168, 83, 0.2);
+        color: #0d652d;
+    }
+
+    .injury-type.other {
+        background-color: rgba(154, 160, 166, 0.2);
+        color: #3c4043;
+    }
+
+.injury-date, .injury-duration {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Flag Icons */
+.flag-icon {
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+/* Badges */
+.badge {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 5px 8px;
+    border-radius: 4px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .player-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .player-info {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .position-buttons {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,221 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "J:\\Work\\VP\\EMS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\migrations\\20250519212300_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:migrations\\20250519212300_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\migrations\\emscontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:migrations\\emscontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|J:\\Work\\VP\\EMS\\Migrations\\20250729220551_MigrationName.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250729220551_MigrationName.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\models\\bookings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:models\\bookings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\models\\evnts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:models\\evnts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\components\\pages\\admin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:components\\pages\\admin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\components\\pages\\user.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:components\\pages\\user.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|j:\\work\\vp\\ems\\components\\pages\\evntspages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9213A20-1EE3-4F88-B041-72B602AD06E6}|EMS.csproj|solutionrelative:components\\pages\\evntspages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EMSContextModelSnapshot.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Migrations\\EMSContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Migrations\\EMSContextModelSnapshot.cs",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Migrations\\EMSContextModelSnapshot.cs",
+              "RelativeToolTip": "Migrations\\EMSContextModelSnapshot.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAUwGoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T22:07:45.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20250519212300_Initial.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Migrations\\20250519212300_Initial.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250519212300_Initial.cs",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Migrations\\20250519212300_Initial.cs",
+              "RelativeToolTip": "Migrations\\20250519212300_Initial.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAIwCAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T22:07:34.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "J:\\Work\\VP\\EMS\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-29T22:06:53.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20250729220551_MigrationName.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Migrations\\20250729220551_MigrationName.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250729220551_MigrationName.cs",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Migrations\\20250729220551_MigrationName.cs",
+              "RelativeToolTip": "Migrations\\20250729220551_MigrationName.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T22:05:51.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Bookings.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Models\\Bookings.cs",
+              "RelativeDocumentMoniker": "Models\\Bookings.cs",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Models\\Bookings.cs",
+              "RelativeToolTip": "Models\\Bookings.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T18:24:45.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Evnts.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Models\\Evnts.cs",
+              "RelativeDocumentMoniker": "Models\\Evnts.cs",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Models\\Evnts.cs",
+              "RelativeToolTip": "Models\\Evnts.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T18:23:28.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T22:41:09.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Error.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Components\\Pages\\Error.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Error.razor",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Components\\Pages\\Error.razor",
+              "RelativeToolTip": "Components\\Pages\\Error.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T22:40:59.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Home.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAAABoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T22:16:15.873Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Create.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Components\\Pages\\EvntsPages\\Create.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\EvntsPages\\Create.razor",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Components\\Pages\\EvntsPages\\Create.razor",
+              "RelativeToolTip": "Components\\Pages\\EvntsPages\\Create.razor",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAkwAwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T22:12:38.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Admin.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Components\\Pages\\Admin.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Admin.razor",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Components\\Pages\\Admin.razor",
+              "RelativeToolTip": "Components\\Pages\\Admin.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T21:08:35.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "User.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\EMS\\Components\\Pages\\User.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\User.razor",
+              "ToolTip": "J:\\Work\\VP\\EMS\\Components\\Pages\\User.razor",
+              "RelativeToolTip": "Components\\Pages\\User.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T21:08:34.269Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

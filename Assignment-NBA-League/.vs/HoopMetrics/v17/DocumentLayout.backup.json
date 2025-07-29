@@ -1,0 +1,265 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "J:\\Work\\VP\\HoopMetrics\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\components\\pages\\playerlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:components\\pages\\playerlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\components\\pages\\playerstatsview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:components\\pages\\playerstatsview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\services\\playerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:services\\playerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\services\\statscalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:services\\statscalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\services\\iplayerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:services\\iplayerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\services\\istatscalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:services\\istatscalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\models\\performancestats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:models\\performancestats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\components\\pages\\positionfilter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:components\\pages\\positionfilter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\components\\pages\\performancestats.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:components\\pages\\performancestats.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\components\\pages\\injurystats.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:components\\pages\\injurystats.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|j:\\work\\vp\\hoopmetrics\\components\\pages\\fitnessstats.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7AEF717-CA41-46AC-BFE1-DD44FB60AB64}|HoopMetrics.csproj|solutionrelative:components\\pages\\fitnessstats.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T18:10:06.763Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IPlayerService.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Services\\IPlayerService.cs",
+              "RelativeDocumentMoniker": "Services\\IPlayerService.cs",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Services\\IPlayerService.cs",
+              "RelativeToolTip": "Services\\IPlayerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T10:08:11.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T10:06:21.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PerformanceStats.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Models\\PerformanceStats.cs",
+              "RelativeDocumentMoniker": "Models\\PerformanceStats.cs",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Models\\PerformanceStats.cs",
+              "RelativeToolTip": "Models\\PerformanceStats.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T10:08:30.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IStatsCalculator.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Services\\IStatsCalculator.cs",
+              "RelativeDocumentMoniker": "Services\\IStatsCalculator.cs",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Services\\IStatsCalculator.cs",
+              "RelativeToolTip": "Services\\IStatsCalculator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T10:08:36.535Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StatsCalculator.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Services\\StatsCalculator.cs",
+              "RelativeDocumentMoniker": "Services\\StatsCalculator.cs",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Services\\StatsCalculator.cs",
+              "RelativeToolTip": "Services\\StatsCalculator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T10:08:24.52Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerList.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\PlayerList.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\PlayerList.razor",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\PlayerList.razor",
+              "RelativeToolTip": "Components\\Pages\\PlayerList.razor",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAAAFQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T10:06:24.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerStatsView.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\PlayerStatsView.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\PlayerStatsView.razor",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\PlayerStatsView.razor",
+              "RelativeToolTip": "Components\\Pages\\PlayerStatsView.razor",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAAEsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T10:06:25.126Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerService.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Services\\PlayerService.cs",
+              "RelativeDocumentMoniker": "Services\\PlayerService.cs",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Services\\PlayerService.cs",
+              "RelativeToolTip": "Services\\PlayerService.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAAwAsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T10:08:14.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Player.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Models\\Player.cs",
+              "RelativeDocumentMoniker": "Models\\Player.cs",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Models\\Player.cs",
+              "RelativeToolTip": "Models\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T14:09:48.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T10:07:11.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PositionFilter.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\PositionFilter.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\PositionFilter.razor",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\PositionFilter.razor",
+              "RelativeToolTip": "Components\\Pages\\PositionFilter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T10:06:25.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PerformanceStats.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\PerformanceStats.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\PerformanceStats.razor",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\PerformanceStats.razor",
+              "RelativeToolTip": "Components\\Pages\\PerformanceStats.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T10:06:23.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "InjuryStats.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\InjuryStats.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\InjuryStats.razor",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\InjuryStats.razor",
+              "RelativeToolTip": "Components\\Pages\\InjuryStats.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T10:06:22.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "FitnessStats.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\FitnessStats.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\FitnessStats.razor",
+              "ToolTip": "J:\\Work\\VP\\HoopMetrics\\Components\\Pages\\FitnessStats.razor",
+              "RelativeToolTip": "Components\\Pages\\FitnessStats.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T10:06:20.628Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

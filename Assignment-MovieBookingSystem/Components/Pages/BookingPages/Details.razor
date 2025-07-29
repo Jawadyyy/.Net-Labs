@@ -1,0 +1,91 @@
+﻿@page "/bookings/details"
+@using MovieBookingSystem.Models
+@using MovieBookingSystem.Services
+@inject BookingService BookingService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Booking Details</PageTitle>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            @if (Booking == null)
+            {
+                <div class="alert alert-info text-center" role="alert">
+                    <em>Loading...</em>
+                </div>
+            }
+            else
+            {
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="mb-0">Booking Details</h2>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">@Booking.MovieTitle</h4>
+                        <dl class="row mb-4">
+                            <dt class="col-sm-4 fw-bold">Customer Name</dt>
+                            <dd class="col-sm-8">@Booking.CustomerName</dd>
+
+                            <dt class="col-sm-4 fw-bold">Showtime</dt>
+                            <dd class="col-sm-8">@Booking.Showtime.ToString("f")</dd>
+
+                            <dt class="col-sm-4 fw-bold">Seat Number</dt>
+                            <dd class="col-sm-8">@Booking.SeatNumber</dd>
+                        </dl>
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <a href="@($"/bookings/edit?id={Booking.Id}")" class="btn btn-primary btn-lg">Edit</a>
+                            <a href="/bookings" class="btn btn-outline-secondary btn-lg">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: background-color 0.2s ease-in-out;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+    .btn-outline-secondary {
+        transition: background-color 0.2s ease-in-out;
+    }
+    .btn-outline-secondary:hover {
+        background-color: #f8f9fa;
+    }
+    .dl-horizontal dt {
+        font-weight: bold;
+    }
+</style>
+
+@code {
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public int Id { get; set; }
+
+    private Booking? Booking { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Booking = BookingService.GetBookingById(Id);
+
+        if (Booking == null)
+        {
+            NavigationManager.NavigateTo("/notfound");
+        }
+    }
+}

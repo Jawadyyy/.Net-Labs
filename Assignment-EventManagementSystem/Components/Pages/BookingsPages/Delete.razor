@@ -1,0 +1,145 @@
+﻿@page "/bookings/delete"
+@using Microsoft.EntityFrameworkCore
+@using EMS.Models
+@inject IDbContextFactory<EMS.Data.EMSContext> DbFactory
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<PageTitle>Delete Booking</PageTitle>
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-dark text-white">
+            <h3 class="mb-0">
+                <i class="fas fa-trash-alt me-2"></i>Delete Booking
+            </h3>
+        </div>
+
+        <div class="card-body">
+            @if (bookings is null)
+            {
+                <div class="d-flex justify-content-center my-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    <h4 class="alert-heading">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Warning!
+                    </h4>
+                    <p>Are you sure you want to delete this booking? This action cannot be undone.</p>
+                </div>
+
+                <div class="booking-details bg-light p-4 rounded mb-4">
+                    <h4 class="text-primary mb-4">Booking Details</h4>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="detail-item">
+                                <span class="fw-bold text-dark">Name:</span>
+                                <span class="ms-2">@bookings.Name</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="detail-item">
+                                <span class="fw-bold text-dark">Email:</span>
+                                <span class="ms-2">@bookings.Email</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="detail-item">
+                                <span class="fw-bold text-dark">Number of Seats:</span>
+                                <span class="ms-2">@bookings.NumberOfSeats</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="detail-item">
+                                <span class="fw-bold text-dark">Event ID:</span>
+                                <span class="ms-2">@bookings.EventId</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <EditForm method="post" Model="bookings" OnValidSubmit="DeleteBookings" FormName="delete" Enhance>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-danger" disabled="@(bookings is null)">
+                            <i class="fas fa-trash-alt me-2"></i>Confirm Delete
+                        </button>
+                        <a href="/bookings" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left me-2"></i>Back to List
+                        </a>
+                    </div>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        border-bottom: 2px solid rgba(0, 123, 255, 0.3);
+    }
+
+    .detail-item {
+        padding: 8px 12px;
+        background-color: white;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        transition: all 0.2s;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+            transform: translateY(-1px);
+        }
+
+    .btn-outline-primary {
+        transition: all 0.2s;
+    }
+
+        .btn-outline-primary:hover {
+            transform: translateY(-1px);
+        }
+</style>
+
+@code {
+    private Bookings? bookings;
+
+    [SupplyParameterFromQuery]
+    private int BookingId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        bookings = await context.Bookings.FirstOrDefaultAsync(m => m.BookingId == BookingId);
+
+        if (bookings is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task DeleteBookings()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Bookings.Remove(bookings!);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/bookings");
+    }
+}

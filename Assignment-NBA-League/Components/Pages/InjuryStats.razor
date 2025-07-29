@@ -1,0 +1,49 @@
+﻿@using HoopMetrics.Models
+@rendermode InteractiveServer
+
+@if (Player != null)
+{
+    <div class="stats-card injury-card">
+        <div class="card-header injury-header">
+            <h5>Injury History</h5>
+            <span class="games-missed-badge">
+                Missed: @Player.InjuryStats.GamesMissed games
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="injury-details">
+                <div class="injury-type @GetInjuryClass(Player.InjuryStats.InjuryType)">
+                    @Player.InjuryStats.InjuryType
+                </div>
+                <div class="injury-date">
+                    Since: @Player.InjuryStats.InjuryDate.ToShortDateString()
+                </div>
+                <div class="injury-duration">
+                    @GetInjuryDuration(Player.InjuryStats.InjuryDate)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public Player Player { get; set; }
+
+    private string GetInjuryClass(string injuryType)
+    {
+        if (injuryType.Contains("Sprain")) return "sprain";
+        if (injuryType.Contains("Strain")) return "strain";
+        if (injuryType.Contains("None")) return "none";
+        return "other";
+    }
+
+    private string GetInjuryDuration(DateTime injuryDate)
+    {
+        var duration = DateTime.Now - injuryDate;
+        if (duration.TotalDays > 60) return "Long-term injury";
+        if (duration.TotalDays > 14) return "Mid-term injury";
+        if (duration.TotalDays > 0) return "Recent injury";
+        return "Current injury";
+    }
+}

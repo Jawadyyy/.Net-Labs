@@ -1,0 +1,52 @@
+﻿@page "/booking-confirmation/{BookingId:int}"
+@using Microsoft.EntityFrameworkCore
+@using EMS.Models
+@inject IDbContextFactory<EMS.Data.EMSContext> DbFactory
+@rendermode InteractiveServer
+
+<PageTitle>Booking Confirmation</PageTitle>
+
+<h1>Booking Confirmation</h1>
+
+@if (Booking == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="alert alert-success">
+        <h3>Thank you for your booking, @Booking.Name!</h3>
+        <p>Your booking reference is: <strong>@Booking.BookingId</strong></p>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@Booking.Event.Title</h4>
+            <p class="card-text">
+                <strong>Date:</strong> @Booking.Event.EventDateTime.ToString("yyyy-MM-dd HH:mm")<br>
+                <strong>Venue:</strong> @Booking.Event.Venue<br>
+                <strong>Seats:</strong> @Booking.NumberOfSeats<br>
+                <strong>Total Price:</strong> @((Booking.NumberOfSeats * Booking.Event.TicketPrice).ToString("C"))
+            </p>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a href="/" class="btn btn-primary">Back to Events</a>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int BookingId { get; set; }
+
+    private Bookings? Booking { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        Booking = await context.Bookings
+            .Include(b => b.Event)
+            .FirstOrDefaultAsync(b => b.BookingId == BookingId);
+    }
+}
