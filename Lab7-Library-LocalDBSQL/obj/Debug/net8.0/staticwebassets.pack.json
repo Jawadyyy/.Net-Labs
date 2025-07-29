@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "J:\\Work\\VP\\Lab7\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\lab10.bundle.scp.css",
+      "PackagePath": "staticwebassets\\lab10.3tnyi1n0od.bundle.scp.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab7\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab7\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab7\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "J:\\Work\\VP\\Lab7\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.lab10.props",
+      "PackagePath": "build\\lab10.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.lab10.props",
+      "PackagePath": "buildMultiTargeting\\lab10.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.lab10.props",
+      "PackagePath": "buildTransitive\\lab10.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.lab10.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.lab10.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

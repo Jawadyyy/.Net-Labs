@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "J:\\Work\\VP\\Lab7\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F8ECE17D-450E-4FBA-B2DF-D09CAE632A2D}|lab10.csproj|j:\\work\\vp\\lab7\\components\\pages\\booklist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F8ECE17D-450E-4FBA-B2DF-D09CAE632A2D}|lab10.csproj|solutionrelative:components\\pages\\booklist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8ECE17D-450E-4FBA-B2DF-D09CAE632A2D}|lab10.csproj|j:\\work\\vp\\lab7\\components\\pages\\addbook.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F8ECE17D-450E-4FBA-B2DF-D09CAE632A2D}|lab10.csproj|solutionrelative:components\\pages\\addbook.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8ECE17D-450E-4FBA-B2DF-D09CAE632A2D}|lab10.csproj|j:\\work\\vp\\lab7\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8ECE17D-450E-4FBA-B2DF-D09CAE632A2D}|lab10.csproj|solutionrelative:services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8ECE17D-450E-4FBA-B2DF-D09CAE632A2D}|lab10.csproj|j:\\work\\vp\\lab7\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8ECE17D-450E-4FBA-B2DF-D09CAE632A2D}|lab10.csproj|solutionrelative:models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8ECE17D-450E-4FBA-B2DF-D09CAE632A2D}|lab10.csproj|j:\\work\\vp\\lab7\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8ECE17D-450E-4FBA-B2DF-D09CAE632A2D}|lab10.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Book.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\Lab7\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "Models\\Book.cs",
+              "ToolTip": "J:\\Work\\VP\\Lab7\\Models\\Book.cs",
+              "RelativeToolTip": "Models\\Book.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T10:32:24.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BookService.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\Lab7\\Services\\BookService.cs",
+              "RelativeDocumentMoniker": "Services\\BookService.cs",
+              "ToolTip": "J:\\Work\\VP\\Lab7\\Services\\BookService.cs",
+              "RelativeToolTip": "Services\\BookService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T15:32:01.769Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "J:\\Work\\VP\\Lab7\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "J:\\Work\\VP\\Lab7\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T15:32:05.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddBook.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\Lab7\\Components\\Pages\\AddBook.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\AddBook.razor",
+              "ToolTip": "J:\\Work\\VP\\Lab7\\Components\\Pages\\AddBook.razor",
+              "RelativeToolTip": "Components\\Pages\\AddBook.razor",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAABcAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T13:06:12.217Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookList.razor",
+              "DocumentMoniker": "J:\\Work\\VP\\Lab7\\Components\\Pages\\BookList.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\BookList.razor",
+              "ToolTip": "J:\\Work\\VP\\Lab7\\Components\\Pages\\BookList.razor",
+              "RelativeToolTip": "Components\\Pages\\BookList.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T13:04:59.28Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

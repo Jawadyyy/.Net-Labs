@@ -1,0 +1,45 @@
+﻿@page "/books"
+@inject BlazorBookLibrary.Services.BookService BookService
+@rendermode InteractiveServer
+
+<div class="container mt-4">
+    <h3 class="text-primary mb-4">Book List</h3>
+
+    @if (BookService.GetBooks().Count == 0)
+    {
+        <div class="alert alert-info">
+            No books available in the library.
+        </div>
+    }
+    else
+    {
+        <div class="list-group">
+            @foreach (var book in BookService.GetBooks())
+            {
+                <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">@book.Title</h5>
+                        <small class="text-muted">ID: @book.Id</small>
+                    </div>
+                    <p class="mb-1">by @book.Author</p>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    .container {
+        max-width: 800px;
+    }
+
+    h3 {
+        border-bottom: 2px solid #dee2e6;
+        padding-bottom: 10px;
+    }
+
+    .list-group-item {
+        margin-bottom: 8px;
+        border-radius: 4px !important;
+    }
+</style>

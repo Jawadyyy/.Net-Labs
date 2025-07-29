@@ -1,0 +1,55 @@
+﻿@page "/add-book"
+@inject BlazorBookLibrary.Services.BookService BookService
+@using BlazorBookLibrary.Models
+@rendermode InteractiveServer
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Add New Book</h3>
+                </div>
+                
+                <div class="card-body">
+                    <div class="form-group mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input id="title" placeholder="Enter book title" @bind="book.Title" class="form-control" />
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="author" class="form-label">Author</label>
+                        <input id="author" placeholder="Enter author name" @bind="book.Author" class="form-control" />
+                    </div>
+                    
+                    <button class="btn btn-success w-100" @onclick="IncBook" disabled="@(string.IsNullOrWhiteSpace(book.Title) || string.IsNullOrWhiteSpace(book.Author))">
+                        <i class="bi bi-plus-circle"></i> Add Book
+                    </button>
+                </div>
+                
+                @if (showSuccess)
+                {
+                    <div class="card-footer bg-light">
+                        <div class="alert alert-success mb-0">
+                            Book added successfully!
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Book book = new();
+    private bool showSuccess = false;
+
+    private async Task IncBook()
+    {
+        BookService.IncBook(book);
+        book = new();
+        showSuccess = true;
+        await Task.Delay(2000); // Show success message for 2 seconds
+        showSuccess = false;
+    }
+}
