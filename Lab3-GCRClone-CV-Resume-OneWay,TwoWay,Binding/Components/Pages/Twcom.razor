@@ -1,0 +1,18 @@
+﻿@page "/Twcom"
+@rendermode RenderMode.InteractiveServer
+
+<h3>TwCom</h3>
+<p>Slider Value: <b>@SliderValue</b></p>
+<input type="range" step="1" value="@SliderValue" @oninput="UpdateSlider" />
+
+@code {
+    private int SliderValue = 0;
+
+    private void UpdateSlider(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int newValue))
+        {
+            SliderValue = newValue;
+        }
+    }
+}

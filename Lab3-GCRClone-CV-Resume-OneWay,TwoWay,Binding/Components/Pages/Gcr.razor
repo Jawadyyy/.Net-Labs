@@ -1,0 +1,193 @@
+﻿@page "/gcr"
+
+<PageTitle>Google ClassRoom</PageTitle>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Classroom</title>
+    <style>
+        <style>
+    body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    #navbar {
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px 20px;
+    }
+
+    .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .navbar-icon {
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
+    .navbar-text .title {
+        font-size: 20px;
+        font-weight: 500;
+        color: #3c4043;
+    }
+
+    .bi {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    .main-content {
+        padding: 20px;
+        margin-top: 60px;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 300px;
+        text-align: center;
+        position: relative;
+    }
+    .card-banner {
+        height: 100px;/
+        position: relative;
+    }
+    .avatar {
+        background-color: #c9c9c9;             
+        color: white;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: -30px auto 10px;
+        font-size: 24px;
+        position: relative;
+        z-index: 1;
+    }
+    .card-body {
+        padding: 20px;
+    }
+    .card-title {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+    }
+    .card-text {
+        color: #666;
+        font-size: 14px;
+    }
+    .card-icons {
+        margin-top: 15px;
+    }
+    .card-icons i {
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+    .banner-dot-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .card-folder-icons {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+    }
+    .card-folder-icons img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+</style>
+    </style>
+</head>
+<body>
+    <header id="navbar">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container navbar-container">
+                <div class="navbar-left">
+                    <a class="navbar-brand" style="display: flex; align-items: center;">
+                        <img src="images/menu.png" alt="Menu" width="30" height="24" class="navbar-icon" id="menu-icon" onclick="toggleSidebar()">
+                        <img src="images/gcr.png" alt="Google Classroom" width="30" height="36" class="navbar-icon">
+                        <div class="navbar-text">
+                            <span class="title">Classroom</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="navbar-right">
+                    <img src="images/plus.png" alt="Add" width="20" height="20" class="navbar-icon">
+                    <img src="images/dots-menu.png" alt="Menu" width="20" height="20" class="navbar-icon">
+                    <img src="images/user.png" alt="User" width="30" height="30">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="course-container">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const courses = [
+            { bannerColor: 'brown', avatar: 'C', title: 'Computer Networks', description: 'BSCSev IV Section B', instructor: 'Yasir Ali' },
+            { bannerColor: 'green', avatar: 'S', title: 'Software Engineering', description: 'BSCSev IV Section B', instructor: 'Bilal Khan' },
+            { bannerColor: 'blue', avatar: 'M', title: 'MultiVariable Calculus', description: 'BSCSov IV Section B', instructor: 'Imtiaz Khan' },
+            { bannerColor: 'orange', avatar: 'A', title: 'App Development', description: 'BSCSov IV Section B', instructor: 'Kainat Nazir' },
+            { bannerColor: 'black', avatar: 'W', title: 'Web Development', description: 'BSCSov IV Section B', instructor: 'Professor Waqas' },
+            { bannerColor: 'purple', avatar: 'P', title: 'Programming Fundamentals', description: 'BSCSov IV Section B', instructor: 'Iqra Ali' }
+        ];
+
+        const courseContainer = document.getElementById('course-container');
+        courses.forEach(course => {
+            const card = `
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-banner" style="background-color: ${course.bannerColor};">
+                            <img src="images/more.png" alt="Dot" class="banner-dot-icon">
+                        </div>
+                        <div class="avatar">${course.avatar}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">${course.title}</h5>
+                            <p class="card-text">${course.description}</p>
+                            <p class="card-text"><small class="text-body-secondary">${course.instructor}</small></p>
+                            <div class="card-icons">
+                                <i class="fas fa-share-alt"></i>
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="card-folder-icons">
+                                <img src="images/id.png" alt="ID">
+                                <img src="images/folder.png" alt="Folder">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            courseContainer.innerHTML += card;
+        });
+    </script>
+</body>
+</html>

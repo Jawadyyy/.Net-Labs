@@ -1,0 +1,15 @@
+wwwroot\app.css
+wwwroot\bootstrap\bootstrap.min.css
+wwwroot\bootstrap\bootstrap.min.css.map
+wwwroot\bootstrap\form.css
+wwwroot\favicon.png
+wwwroot\images\chevron.png
+wwwroot\images\dots-menu.png
+wwwroot\images\folder.png
+wwwroot\images\gcr.png
+wwwroot\images\id.png
+wwwroot\images\man.jpg
+wwwroot\images\menu.png
+wwwroot\images\more.png
+wwwroot\images\plus.png
+wwwroot\images\user.png
